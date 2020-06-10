@@ -5,7 +5,7 @@
 
 /*主界面:空调管理员AirconController
  * @author:张子鸣
- * 后台人机交互界面，设置参数、实时监控、订房/退房、打印账单/详单
+ * 后台人机交互界面，设置参数、实时监控、订房&退房、打印账单or详单
  * 负责管理ScheduleObject
  * 接收ScheduleObject发来的信号，对表格信息进行更新
  * *******************************************************/
@@ -128,9 +128,6 @@ void AdminController::on_LFeeSpin_valueChanged(double LowSpeedFeeRate)
         ui->LFeeSpin->setValue(FEERATE_UPPER);
         FeeRate[Low] = FEERATE_UPPER;
     }
-#ifdef _DEBUG
-    qDebug()<<QString::asprintf("当前费率：L%f, M%f, H%f",FeeRate[Low], FeeRate[Middle], FeeRate[High]);
-#endif
 }
 //在界面修改中风速费率
 void AdminController::on_MFeeSpin_valueChanged(double MiddleSpeedFeeRate)
@@ -145,9 +142,6 @@ void AdminController::on_MFeeSpin_valueChanged(double MiddleSpeedFeeRate)
         ui->MFeeSpin->setValue(FEERATE_UPPER);
         FeeRate[Middle] = FEERATE_UPPER;
     }
-#ifdef _DEBUG
-    qDebug()<<QString::asprintf("当前费率：L%f, M%f, H%f",FeeRate[Low], FeeRate[Middle], FeeRate[High]);
-#endif
 }
 //在界面修改高风速费率
 void AdminController::on_HFeeSpin_valueChanged(double HighSpeedFeeRate)
@@ -162,9 +156,6 @@ void AdminController::on_HFeeSpin_valueChanged(double HighSpeedFeeRate)
         ui->HFeeSpin->setValue(FEERATE_UPPER);
         FeeRate[High] = FEERATE_UPPER;
     }
-#ifdef _DEBUG
-    qDebug()<<QString::asprintf("当前费率：L%.2f, M%.2f, H%.2f",FeeRate[Low], FeeRate[Middle], FeeRate[High]);
-#endif
 }
 //在界面修改最高温度
 void AdminController::on_HighestTempSpin_valueChanged(int HighTemp)
@@ -329,7 +320,7 @@ void AdminController::Table_ServerObjectRefreshed
         if(RoomIdItem->text().toInt() == RoomId)
         {
             StatusItem = ui->tableRoomState->item(rowNum, STATUS);
-            if(StatusItem->text().compare(QStringLiteral("已退房")) == 0) continue;
+            if(StatusItem->text().compare(tr("已退房")) == 0) continue;
             //else if:客户未退房
             setCenterTableItem(rowNum, DURATION, QString::number(Duration, 10).append("s"), DURATION);//修改Duration
             setCenterTableItem(rowNum, TARGETTEMP, QString::number(TargetTemp, 10), TARGETTEMP);//修改TargetTemp
@@ -406,7 +397,7 @@ void AdminController::setRoomStatusItem(int RoomId, QString text)
         if(RoomIdItem->text().toInt() == RoomId)
         {
             StatusItem = ui->tableRoomState->item(rowNum, STATUS);
-            if(StatusItem->text().compare(QStringLiteral("已退房")) == 0) continue;
+            if(StatusItem->text().compare(tr("已退房")) == 0) continue;
             setCenterTableItem(rowNum, STATUS, text, STATUS);
             break;
         }

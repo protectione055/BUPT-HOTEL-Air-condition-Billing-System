@@ -1,6 +1,6 @@
 ﻿#include "waitingobject.h"
 
-/*
+/*等待对象
  * @author:王浩铭
  * **********************/
 

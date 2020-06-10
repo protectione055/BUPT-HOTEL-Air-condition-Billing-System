@@ -43,15 +43,16 @@ QT_MOC_LITERAL(7, 64, 11), // "CurrentTemp"
 QT_MOC_LITERAL(8, 76, 3), // "Fee"
 QT_MOC_LITERAL(9, 80, 18), // "PauseServingSignal"
 QT_MOC_LITERAL(10, 99, 19), // "ResumeServingSignal"
-QT_MOC_LITERAL(11, 119, 6), // "Charge"
-QT_MOC_LITERAL(12, 126, 16), // "StartServingRoom"
-QT_MOC_LITERAL(13, 143, 16) // "PauseServingRoom"
+QT_MOC_LITERAL(11, 119, 16), // "StartServingRoom"
+QT_MOC_LITERAL(12, 136, 16), // "PauseServingRoom"
+QT_MOC_LITERAL(13, 153, 6) // "Charge"
 
     },
     "ServerObject\0RefreshSignal\0\0RoomId\0"
     "Duartion\0TargetTemp\0FanSpeed\0CurrentTemp\0"
     "Fee\0PauseServingSignal\0ResumeServingSignal\0"
-    "Charge\0StartServingRoom\0PauseServingRoom"
+    "StartServingRoom\0PauseServingRoom\0"
+    "Charge"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,7 +77,7 @@ static const uint qt_meta_data_ServerObject[] = {
  // slots: name, argc, parameters, tag, flags
       11,    0,   63,    2, 0x0a /* Public */,
       12,    0,   64,    2, 0x0a /* Public */,
-      13,    0,   65,    2, 0x0a /* Public */,
+      13,    0,   65,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Float,    3,    4,    5,    6,    7,    8,
@@ -100,9 +101,9 @@ void ServerObject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 0: _t->RefreshSignal((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< float(*)>(_a[6]))); break;
         case 1: _t->PauseServingSignal((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->ResumeServingSignal((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->Charge(); break;
-        case 4: _t->StartServingRoom(); break;
-        case 5: _t->PauseServingRoom(); break;
+        case 3: _t->StartServingRoom(); break;
+        case 4: _t->PauseServingRoom(); break;
+        case 5: _t->Charge(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

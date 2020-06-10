@@ -1,6 +1,9 @@
 ﻿#include "dialogcheckin.h"
 #include "ui_dialogcheckin.h"
 
+/*
+ * 入住对话框
+ * *************/
 
 DialogCheckIn::DialogCheckIn(QWidget *parent) :
     QDialog(parent),

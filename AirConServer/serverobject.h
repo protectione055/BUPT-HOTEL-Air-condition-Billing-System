@@ -40,9 +40,12 @@ private:
     QTimer *ServerTimer;    //服务计时器，超时设定为SERVE_TIME
 
 public slots:
-    void Charge();//计费
+
     void StartServingRoom();    //接收主线程startRunning信号，moveToThread时启动计费
     void PauseServingRoom();    //暂停计费，通知scheduler退出服务队列，进入等待对象
+
+private slots:
+    void Charge();//计费
 
 signals:
     void RefreshSignal(int RoomId, int Duartion, int TargetTemp, int FanSpeed, int CurrentTemp, float Fee);  //调度对象发送信号修改表格

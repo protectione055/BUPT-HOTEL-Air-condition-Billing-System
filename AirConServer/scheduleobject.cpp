@@ -1,6 +1,8 @@
 ﻿#include "scheduleobject.h"
 #include<QDebug>
 
+/*调度对象
+ * **************/
 
 //构造函数
 ScheduleObject::ScheduleObject(SystemTempLimit inTempLimit, bool *inMode, float *inFeeRate)
@@ -36,7 +38,7 @@ int ScheduleObject::countServerObject()
     QMapIterator<int, ServerObject*> i(ServerSet);
     while(i.hasNext())
     {
-        if(i.next().value() !=NULL)
+        if(i.next().value() != nullptr)
             ++count;
     }
     return count;
@@ -124,11 +126,11 @@ void ScheduleObject::destroyServerObject(int inRoomId)
 {
     stopServerObject(inRoomId);
     delete ServerSet[inRoomId];
-    ServerSet[inRoomId] = NULL;
+    ServerSet[inRoomId] = nullptr;
 }
 
 /*TODO服务队列调度
- * 在此执行服务对象的调度和线程创建
+ * 执行服务对象的调度和线程创建,RoomId代表被踢出的线程房号
  * 调用ServerObject->StartServingRoom()方法开始执行线程,ServerObject->PauseServingRoom()停止执行
  * 主要步骤:
  * 1.客户机发来开机消息,将对应服务对象指针从ServerSet[RoomId]放入WaitingList,
